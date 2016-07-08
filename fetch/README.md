@@ -29,7 +29,7 @@ see: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
 ##### Create a header object with initial values
 ```
-let headers = new Header({
+let headers = new Headers({
   'Content-Type': 'application/json'
 });
 ```
@@ -47,7 +47,6 @@ headers.append('Authorization', 'Bearer xyz...');
 - mode: cors, no-cors, same-origin
 - credentials: should cookies go with the request? omit, same-origin
 - redirect: follow, error, manual
-- integrity: subresource integrity value
 - cache: cache mode (default, reload, no-cache)
 - body: ...
 
@@ -70,8 +69,22 @@ let request = new Request('http://localhost:3000/orders/update/status/', {
 ...
 ```
 
+#### Fetch the Request Object
+```
+fetch(request)
+  .then((response) => {
+     return response.json(); // ReadableByteStream
+  })
+  .then((json) => {
+    console.log(json);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
 ## Links
 
 * [Docs - MDN](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
-* [Can I use window.crypto](http://caniuse.com/#search=Web%20crypto)
+* [Can I use window.fetch](http://caniuse.com/#search=Web%20crypto)
 * [A window.fetch JavaScript polyfill](http://github.github.io/fetch/)
